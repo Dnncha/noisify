@@ -148,7 +148,7 @@ class NoiseControl extends React.Component {
         
         {this.state.loaded && 
         <div>
-          <div className='volume'>
+          <div className='volume my-2'>
             <label>
               Volume:
                 <input
@@ -163,13 +163,12 @@ class NoiseControl extends React.Component {
             </label>
           </div>
           <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
-            {(this.state.playing) ? 'Pause' : 'Start Noise'}
+            {(this.state.playing) ? 'Stop Noise' : 'Start Noise'}
           </Button>
         </div>
         }
 
       {!this.state.loaded && 
-        
            <Spinner
           as="span"
           animation="border"
@@ -178,8 +177,6 @@ class NoiseControl extends React.Component {
           aria-hidden="true"
         />
         }
-
-
 
       </div>
     )

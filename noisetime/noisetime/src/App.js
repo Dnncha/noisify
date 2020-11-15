@@ -1,6 +1,5 @@
 import React from 'react'
 import { NoiseControl } from './players'
-import ReactHowler from 'react-howler'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -14,8 +13,9 @@ class App extends React.Component {
       <Container>
         <Row >
           <Col>
-            <h1 className='title'>Noisify</h1>
-            <NoiseControl />
+            <h1 className='title my-3'>Noisify</h1>
+            <NoiseControl className="mt-3 mb-3" />
+            <p className="mt-3">A deep work tool made by <a href="https://focalise.ie">Focalise.ie</a></p>
           </Col>
         </Row>
       </Container>
