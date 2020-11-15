@@ -1,14 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
+import Button from 'react-bootstrap/Button'
 
-const Button = (props) => {
+const ControlButton = (props) => {
   const { children, className, ...otherProps } = props
 
   return (
-    <button className={classnames('button', className)} {...otherProps}>
+    <Button className={classnames('button', className)} {...otherProps}>
       {children}
-    </button>
+    </Button>
   )
 }
 
-export default Button
+export default ControlButton

@@ -3,16 +3,16 @@ import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import Button from '../components/Button'
 
-class FullControl extends React.Component {
+class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      playing: true,
+      playing: false,
       loaded: false,
       loop: true,
       mute: false,
-      volume: 1.0,
+      volume: 0.15,
       seek: 0.0,
       isSeeking: false
     }
@@ -35,7 +35,7 @@ class FullControl extends React.Component {
     this.clearRAF()
   }
 
-  
+
   handleToggle () {
     this.setState({
       playing: !this.state.playing
@@ -121,7 +121,7 @@ class FullControl extends React.Component {
 
   render () {
     return (
-      <div className='full-control'>
+      <div className='noise-control'>
         <ReactHowler
           src={['noise.mp3']}
           playing={this.state.playing}
@@ -134,68 +134,24 @@ class FullControl extends React.Component {
           ref={(ref) => (this.player = ref)}
         />
 
-        <p>{(this.state.loaded) ? 'Loaded' : 'Loading'}</p>
+        <p>{(this.state.loaded) ? 'Loaded' : 'Loading...'}</p>
 
-        <div className='toggles'>
-          <label>
-            Loop:
-            <input
-              type='checkbox'
-              checked={this.state.loop}
-              onChange={this.handleLoopToggle}
-            />
-          </label>
-          <label>
-            Mute:
-            <input
-              type='checkbox'
-              checked={this.state.mute}
-              onChange={this.handleMuteToggle}
-            />
-          </label>
-        </div>
-
-        <p>
-          {'Status: '}
-          {this.state.seek.toFixed(2)}
-          {' / '}
-          {(this.state.duration) ? this.state.duration.toFixed(2) : 'NaN'}
-        </p>
 
         <div className='volume'>
           <label>
             Volume:
-            <span className='slider-container'>
               <input
+              class='form-control-range'
                 type='range'
                 min='0'
                 max='1'
-                step='.05'
+                step='.01'
                 value={this.state.volume}
                 onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
               />
-            </span>
-            {this.state.volume.toFixed(2)}
           </label>
         </div>
 
-        <div className='seek'>
-          <label>
-            Seek:
-            <span className='slider-container'>
-              <input
-                type='range'
-                min='0'
-                max={this.state.duration ? this.state.duration.toFixed(2) : 0}
-                step='.01'
-                value={this.state.seek}
-                onChange={this.handleSeekingChange}
-                onMouseDown={this.handleMouseDownSeek}
-                onMouseUp={this.handleMouseUpSeek}
-              />
-            </span>
-          </label>
-        </div>
 
         <Button onClick={this.handleToggle}>
           {(this.state.playing) ? 'Pause' : 'Play'}
@@ -208,4 +164,4 @@ class FullControl extends React.Component {
   }
 }
 
-export default FullControl
+export default NoiseControl
