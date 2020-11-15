@@ -1,19 +1,20 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
-import Button from '../components/Button'
+import Button from 'react-bootstrap/Button'
 import { Howl } from 'howler';
+import Spinner from 'react-bootstrap/Spinner'
 
 class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
 
-    this.noise = new Howl({
-      src: ["noise.mp3"],
-      sprite: {
-        loop: [100, 2000, true]      
-      }
-    })
+    // this.noise = new Howl({
+    //   src: ["noise.mp3"],
+    //   sprite: {
+    //     loop: [100, 2000, true]      
+    //   }
+    // })
   
 
     this.state = {
@@ -24,9 +25,6 @@ class NoiseControl extends React.Component {
       volume: 0.15,
       seek: 0.0,
       isSeeking: false,
-      sprite: {
-        loop: [100, 2000, true]      
-      }
     }
 
     this.handleToggle = this.handleToggle.bind(this)
@@ -50,7 +48,6 @@ class NoiseControl extends React.Component {
 
 
   handleToggle () {
-    // this.noise.play('loop')
 
     this.setState({
       playing: !this.state.playing
@@ -145,33 +142,45 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          sprite={this.state.sprite}
           volume={this.state.volume}
           ref={(ref) => (this.player = ref)}
         />
-
-        <p>{(this.state.loaded) ? 'Loaded' : 'Loading...'}</p>
-
-
-        <div className='volume'>
-          <label>
-            Volume:
-              <input
-              class='form-control-range'
-                type='range'
-                min='0'
-                max='1'
-                step='.01'
-                value={this.state.volume}
-                onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
-              />
-          </label>
+        
+        {this.state.loaded && 
+        <div>
+          <div className='volume'>
+            <label>
+              Volume:
+                <input
+                class='form-control-range input-lg'
+                  type='range'
+                  min='0'
+                  max='1'
+                  step='.01'
+                  value={this.state.volume}
+                  onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
+                />
+            </label>
+          </div>
+          <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
+            {(this.state.playing) ? 'Pause' : 'Start Noise'}
+          </Button>
         </div>
+        }
+
+      {!this.state.loaded && 
+        
+           <Spinner
+          as="span"
+          animation="border"
+          size="lg"
+          role="status"
+          aria-hidden="true"
+        />
+        }
 
 
-        <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
-          {(this.state.playing) ? 'Pause' : 'Start Noise'}
-        </Button>
+
       </div>
     )
   }
