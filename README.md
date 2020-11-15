@@ -1,5 +1,5 @@
 # noiseify
 
-A browser noise generator to help you get your work done.
+A noise generator to help you get your work done.
 
-[Noiseify](https://noisify.xyz/)
+Demo: [Noiseify](https://noisify.xyz/)
