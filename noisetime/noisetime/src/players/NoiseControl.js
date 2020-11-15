@@ -2,10 +2,19 @@ import React from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import Button from '../components/Button'
+import { Howl } from 'howler';
 
 class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
+
+    this.noise = new Howl({
+      src: ["noise.mp3"],
+      sprite: {
+        loop: [100, 2000, true]      
+      }
+    })
+  
 
     this.state = {
       playing: false,
@@ -14,8 +23,12 @@ class NoiseControl extends React.Component {
       mute: false,
       volume: 0.15,
       seek: 0.0,
-      isSeeking: false
+      isSeeking: false,
+      sprite: {
+        loop: [100, 2000, true]      
+      }
     }
+
     this.handleToggle = this.handleToggle.bind(this)
     this.handleOnLoad = this.handleOnLoad.bind(this)
     this.handleOnEnd = this.handleOnEnd.bind(this)
@@ -37,6 +50,8 @@ class NoiseControl extends React.Component {
 
 
   handleToggle () {
+    // this.noise.play('loop')
+
     this.setState({
       playing: !this.state.playing
     })
@@ -130,6 +145,7 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
+          sprite={this.state.sprite}
           volume={this.state.volume}
           ref={(ref) => (this.player = ref)}
         />
@@ -153,11 +169,8 @@ class NoiseControl extends React.Component {
         </div>
 
 
-        <Button onClick={this.handleToggle}>
-          {(this.state.playing) ? 'Pause' : 'Play'}
-        </Button>
-        <Button onClick={this.handleStop}>
-          Stop
+        <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
+          {(this.state.playing) ? 'Pause' : 'Start Noise'}
         </Button>
       </div>
     )

@@ -1,5 +1,4 @@
 import React from 'react'
-import SourceLink from './components/SourceLink'
 import { NoiseControl } from './players'
 import ReactHowler from 'react-howler'
 import 'bootstrap/dist/css/bootstrap.min.css';
