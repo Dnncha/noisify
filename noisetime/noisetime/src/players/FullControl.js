@@ -35,6 +35,7 @@ class FullControl extends React.Component {
     this.clearRAF()
   }
 
+  
   handleToggle () {
     this.setState({
       playing: !this.state.playing
