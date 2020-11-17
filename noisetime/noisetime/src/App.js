@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <Container>
         <Row >
-          <Col>
+          <Col className="text-center">
             <h1 className='title my-3'>Noisify</h1>
             <NoiseControl className="mt-3 mb-3" />
             <p className="mt-3">A deep work tool made by <a href="https://focalise.ie">Focalise.ie</a></p>
