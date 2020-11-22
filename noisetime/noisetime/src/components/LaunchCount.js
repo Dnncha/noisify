@@ -1,6 +1,6 @@
 import React from 'react'
 
-class IPCard extends React.Component {
+class LaunchCount extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -12,7 +12,7 @@ class IPCard extends React.Component {
   
     componentDidMount() {
       fetch
-      ("https://api.ipify.org/?format=json")
+      ("https://api.countapi.xyz/hit/noisify/visits")
       .then(res => res.json())
       .then(
         (result) => {
@@ -39,10 +39,12 @@ class IPCard extends React.Component {
         return <div>Loading...</div>;
       } else {
         return (
-          <div className="mt-4">Your IP is {items.ip}</div>
-        );
+        <div className="mt-5">Noisify has succesfully launched {items.value} times in history.</div>
+          
+
+          );
       }
     }
   }
   
-export default IPCard;
+export default LaunchCount;
