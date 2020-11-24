@@ -8,7 +8,9 @@ import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
 import LaunchCount from './components/LaunchCount'
 import RiseLoader from 'react-spinners/RiseLoader'
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-49CPNXEPEK');
+ReactGA.pageview(window.location.pathname + window.location.search);
 class App extends React.Component {
   render () {
     return (
