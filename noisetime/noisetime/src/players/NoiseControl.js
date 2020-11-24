@@ -2,7 +2,7 @@ import React from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import Button from 'react-bootstrap/Button'
-import { Howl } from 'howler';
+// import { Howl } from 'howler';
 import Spinner from 'react-bootstrap/Spinner'
 
 class NoiseControl extends React.Component {
