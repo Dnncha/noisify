@@ -10,7 +10,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
 import LaunchCount from './components/LaunchCount'
-import RiseLoader from 'react-spinners/RiseLoader'
 import ReactGA from 'react-ga';
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
