@@ -10,9 +10,10 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
 import LaunchCount from './components/LaunchCount'
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga'
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 
 const particleOptions: ParticleOptions = {
@@ -25,7 +26,7 @@ const particleOptions: ParticleOptions = {
 };
 
 const motionForce = (x: number, y: number): ParticleForce => {
-  return forces.disturbance(x, y, 40);
+  return forces.disturbance(x, y, 140);
 };
 
 
@@ -40,7 +41,7 @@ class App extends React.Component {
               <ParticleImage
                 src={"/noise.png"}
                 scale={.5}
-                entropy={170}
+                entropy={270}
                 maxParticles={2000}
                 particleOptions={particleOptions}
                 mouseMoveForce={motionForce}
@@ -50,7 +51,6 @@ class App extends React.Component {
                 backgroundColor={"#343a40"}
               />
             </div>
-            
             <h1 className='title my-3'>Noisify</h1>
             <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
             <NoiseControl className="mt-3 mb-3" />

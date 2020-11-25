@@ -15,7 +15,6 @@ class NoiseControl extends React.Component {
     //     loop: [100, 2000, true]      
     //   }
     // })
-  
 
     this.state = {
       playing: false,
@@ -24,8 +23,6 @@ class NoiseControl extends React.Component {
       mute: false,
       treble_volume: 0.1,
       bass_volume: 0.33,
-      seek: 0.0,
-      isSeeking: false,
     }
 
     this.handleToggle = this.handleToggle.bind(this)
@@ -33,13 +30,9 @@ class NoiseControl extends React.Component {
     this.handleOnEnd = this.handleOnEnd.bind(this)
     this.handleOnPlay = this.handleOnPlay.bind(this)
     this.handleStop = this.handleStop.bind(this)
-    this.renderSeekPos = this.renderSeekPos.bind(this)
     this.handleLoopToggle = this.handleLoopToggle.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
-    this.handleMouseDownSeek = this.handleMouseDownSeek.bind(this)
-    this.handleMouseUpSeek = this.handleMouseUpSeek.bind(this)
-    this.handleSeekingChange = this.handleSeekingChange.bind(this)
-
+    
     
   }
 
@@ -49,7 +42,6 @@ class NoiseControl extends React.Component {
 
 
   handleToggle () {
-
     this.setState({
       playing: !this.state.playing
     })
@@ -66,7 +58,6 @@ class NoiseControl extends React.Component {
     this.setState({
       playing: true
     })
-    this.renderSeekPos()
   }
 
   handleOnEnd () {
@@ -81,7 +72,6 @@ class NoiseControl extends React.Component {
     this.setState({
       playing: false // Need to update our local state so we don't immediately invoke autoplay
     })
-    this.renderSeekPos()
   }
 
   handleLoopToggle () {
@@ -94,37 +84,6 @@ class NoiseControl extends React.Component {
     this.setState({
       mute: !this.state.mute
     })
-  }
-
-  handleMouseDownSeek () {
-    this.setState({
-      isSeeking: true
-    })
-  }
-
-  handleMouseUpSeek (e) {
-    this.setState({
-      isSeeking: false
-    })
-
-    this.player.seek(e.target.value)
-  }
-
-  handleSeekingChange (e) {
-    this.setState({
-      seek: parseFloat(e.target.value)
-    })
-  }
-
-  renderSeekPos () {
-    if (!this.state.isSeeking) {
-      this.setState({
-        seek: this.player.seek()
-      })
-    }
-    if (this.state.playing) {
-      this._raf = raf(this.renderSeekPos)
-    }
   }
 
   clearRAF () {
