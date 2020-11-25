@@ -22,7 +22,8 @@ class NoiseControl extends React.Component {
       loaded: false,
       loop: true,
       mute: false,
-      volume: 0.15,
+      treble_volume: 0.3,
+      bass_volume: 0.75,
       seek: 0.0,
       isSeeking: false,
     }
@@ -135,6 +136,17 @@ class NoiseControl extends React.Component {
     return (
       <div className='noise-control'>
         <ReactHowler
+          src={['bass_noise.mp3']}
+          playing={this.state.playing}
+          onLoad={this.handleOnLoad}
+          onPlay={this.handleOnPlay}
+          onEnd={this.handleOnEnd}
+          loop={this.state.loop}
+          mute={this.state.mute}
+          volume={this.state.bass_volume}
+          ref={(ref) => (this.player = ref)}
+        />
+        <ReactHowler
           src={['noise.mp3']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
@@ -142,24 +154,38 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          volume={this.state.volume}
+          volume={this.state.treble_volume}
           ref={(ref) => (this.player = ref)}
         />
         
         {this.state.loaded && 
         <div>
-          <div className='volume my-5'>
-            <label>
+          <div className='volume my-3 container'>
+          <div className='my-4'>
+                <label>Treble</label>
                 <input
                 class='form-control-range input-lg'
                   type='range'
                   min='0'
                   max='1'
                   step='.01'
-                  value={this.state.volume}
-                  onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
+                  value={this.state.treble_volume}
+                  onChange={e => this.setState({ treble_volume: parseFloat(e.target.value) })}
                 />
-            </label>
+          </div>
+          <div className='my-4'>
+                <label>Bass</label>
+          
+              <input
+                class='form-control-range input-lg'
+                  type='range'
+                  min='0'
+                  max='1'
+                  step='.01'
+                  value={this.state.bass_volume}
+                  onChange={e => this.setState({ bass_volume: parseFloat(e.target.value) })}
+                />
+          </div>
           </div>
           <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
             {(this.state.playing) ? 'Stop Noise' : 'Start Noise'}
