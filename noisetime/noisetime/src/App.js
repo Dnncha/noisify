@@ -30,7 +30,6 @@ const motionForce = (x: number, y: number): ParticleForce => {
 
 
 
-
 class App extends React.Component {
   render () {
     return (
@@ -38,20 +37,20 @@ class App extends React.Component {
         <Row >
           <Col className="text-center">
             <div className="my-5">
-            <ParticleImage
-              src={"/noise.png"}
-              scale={.5}
-              entropy={170}
-              maxParticles={2000}
-              particleOptions={particleOptions}
-              mouseMoveForce={motionForce}
-              touchMoveForce={motionForce}
-              width={1000}
-              height={500}
-              backgroundColor={"#343a40"}
-            />
-              
+              <ParticleImage
+                src={"/noise.png"}
+                scale={.5}
+                entropy={170}
+                maxParticles={2000}
+                particleOptions={particleOptions}
+                mouseMoveForce={motionForce}
+                touchMoveForce={motionForce}
+                width={1000}
+                height={500}
+                backgroundColor={"#343a40"}
+              />
             </div>
+            
             <h1 className='title my-3'>Noisify</h1>
             <NoiseControl className="mt-3 mb-3" />
             <IPCard></IPCard>
