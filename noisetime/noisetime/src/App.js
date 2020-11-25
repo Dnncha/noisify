@@ -20,7 +20,8 @@ const particleOptions: ParticleOptions = {
     const pixel = image.get(x, y);
     return pixel.b < 10;
   },
-  color: ({ x, y, image }) => "white"
+  color: ({ x, y, image }) => "white",
+  radius: () => Math.random() * 1.5 + 0.2
 };
 
 const motionForce = (x: number, y: number): ParticleForce => {
@@ -40,8 +41,8 @@ class App extends React.Component {
             <ParticleImage
               src={"/noise.png"}
               scale={.5}
-              entropy={70}
-              maxParticles={4000}
+              entropy={170}
+              maxParticles={2000}
               particleOptions={particleOptions}
               mouseMoveForce={motionForce}
               touchMoveForce={motionForce}
