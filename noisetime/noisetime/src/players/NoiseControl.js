@@ -22,8 +22,8 @@ class NoiseControl extends React.Component {
       loaded: false,
       loop: true,
       mute: false,
-      treble_volume: 0.3,
-      bass_volume: 0.75,
+      treble_volume: 0.1,
+      bass_volume: 0.33,
       seek: 0.0,
       isSeeking: false,
     }
