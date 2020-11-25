@@ -1,4 +1,7 @@
 import React from 'react'
+import ParticleImage, { ParticleOptions,
+  forces,
+  ParticleForce } from "react-particle-image";
 import { NoiseControl } from './players'
 import Timer from 'react-compound-timer'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +14,24 @@ import RiseLoader from 'react-spinners/RiseLoader'
 import ReactGA from 'react-ga';
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
+
+
+const particleOptions: ParticleOptions = {
+  filter: ({ x, y, image }) => {
+    // Get pixel
+    const pixel = image.get(x, y);
+    // Make a particle for this pixel if blue > 50 (range 0-255)
+    return pixel.b < 10;
+  },
+  color: ({ x, y, image }) => "white"
+};
+
+const motionForce = (x: number, y: number): ParticleForce => {
+  return forces.disturbance(x, y, 5);
+};
+
+
+
 class App extends React.Component {
   render () {
     return (
@@ -18,12 +39,17 @@ class App extends React.Component {
         <Row >
           <Col className="text-center">
             <div className="my-5">
-              <RiseLoader
-              size={50}
-              height={40}
-              margin={50}
-              color={"#5a636d"}
-              ></RiseLoader>
+            <ParticleImage
+              src={"/noise.png"}
+              scale={.5}
+              entropy={50}
+              maxParticles={4000}
+              particleOptions={particleOptions}
+              mouseMoveForce={motionForce}
+              touchMoveForce={motionForce}
+              backgroundColor={"#343a40"}
+            />
+              
             </div>
             <h1 className='title my-3'>Noisify</h1>
             <NoiseControl className="mt-3 mb-3" />
