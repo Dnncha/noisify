@@ -9,6 +9,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
+import GoldCard from './components/GoldCard'
+// import GoldCardRT from './components/GoldCardRT'
 import LaunchCount from './components/LaunchCount'
 import ReactGA from 'react-ga'
 ReactGA.initialize('G-49CPNXEPEK');
@@ -54,6 +56,9 @@ class App extends React.Component {
             <h1 className='title my-3'>Noisify</h1>
             <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
             <NoiseControl className="mt-3 mb-3" />
+            <GoldCard></GoldCard>
+            {/* <GoldCardRT></GoldCardRT> */}
+
             <IPCard></IPCard>
             <div className="mt-5">
               <Timer
