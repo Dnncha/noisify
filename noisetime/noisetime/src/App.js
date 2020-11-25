@@ -18,17 +18,16 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
-    // Get pixel
     const pixel = image.get(x, y);
-    // Make a particle for this pixel if blue > 50 (range 0-255)
     return pixel.b < 10;
   },
   color: ({ x, y, image }) => "white"
 };
 
 const motionForce = (x: number, y: number): ParticleForce => {
-  return forces.disturbance(x, y, 5);
+  return forces.disturbance(x, y, 40);
 };
+
 
 
 
@@ -42,11 +41,13 @@ class App extends React.Component {
             <ParticleImage
               src={"/noise.png"}
               scale={.5}
-              entropy={50}
+              entropy={70}
               maxParticles={4000}
               particleOptions={particleOptions}
               mouseMoveForce={motionForce}
               touchMoveForce={motionForce}
+              width={1000}
+              height={500}
               backgroundColor={"#343a40"}
             />
               
