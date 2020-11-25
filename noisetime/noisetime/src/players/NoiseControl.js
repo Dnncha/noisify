@@ -148,9 +148,8 @@ class NoiseControl extends React.Component {
         
         {this.state.loaded && 
         <div>
-          <div className='volume my-2'>
+          <div className='volume my-5'>
             <label>
-              Volume:
                 <input
                 class='form-control-range input-lg'
                   type='range'
