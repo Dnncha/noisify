@@ -36,7 +36,7 @@ class App extends React.Component {
       <Container className="bg-dark text-light py-5" fluid>
         <Row >
           <Col className="text-center">
-            <div className="my-5">
+            <div className="my-2">
               <ParticleImage
                 src={"/noise.png"}
                 scale={.5}
@@ -52,6 +52,7 @@ class App extends React.Component {
             </div>
             
             <h1 className='title my-3'>Noisify</h1>
+            <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
             <NoiseControl className="mt-3 mb-3" />
             <IPCard></IPCard>
             <div className="mt-5">
