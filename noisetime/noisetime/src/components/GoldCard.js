@@ -1,16 +1,18 @@
 import React from 'react'
+import { AiOutlineReload } from 'react-icons/ai'
 
 class GoldCard extends React.Component {
     constructor(props) {
       super(props);
+      this.get_price = this.get_price.bind(this)
       this.state = {
         error: null,
         isLoaded: false,
         items: []
       };
     }
-  
-    componentDidMount() {
+
+    get_price() {
       fetch
       ("https://www.goldapi.io/api/XAU/USD/", {
       method: 'get',
@@ -37,6 +39,10 @@ class GoldCard extends React.Component {
       )
     }
   
+    componentDidMount() {
+      this.get_price()
+    }
+  
     render() {
       const { error, isLoaded, items } = this.state;
       if (error) {
@@ -45,7 +51,10 @@ class GoldCard extends React.Component {
         return <div>Loading...</div>;
       } else {
         return (
+          <div>
           <div className="mt-4">XAU ${items.price}</div>
+          <button className='btn btn-default' onClick={this.get_price}><AiOutlineReload/></button>
+          </div>
         );
       }
     }
