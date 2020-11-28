@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import Button from 'react-bootstrap/Button'
-// import { Howl } from 'howler';
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
 
@@ -101,6 +100,8 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
+          // sprite={{loop: [100, 1000, true]}}      
+            //   }}
           // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
