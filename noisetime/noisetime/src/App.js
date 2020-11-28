@@ -15,7 +15,12 @@ import LaunchCount from './components/LaunchCount'
 import ReactGA from 'react-ga'
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 
 const particleOptions: ParticleOptions = {
@@ -39,6 +44,8 @@ class App extends React.Component {
       <Container className="bg-dark text-light py-5" fluid>
         <Row >
           <Col className="text-center">
+          <BrowserView>
+
             <div>
               <ParticleImage
                 src={"/noise.png"}
@@ -53,6 +60,8 @@ class App extends React.Component {
                 backgroundColor={"#343a40"}
               />
             </div>
+            </BrowserView>
+
             <h1 className='title my-3'>Noisify</h1>
             <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
             <NoiseControl className="mt-3 mb-3" />

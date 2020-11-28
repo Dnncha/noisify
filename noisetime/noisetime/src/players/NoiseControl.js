@@ -8,7 +8,6 @@ import ls from 'local-storage'
 import { FaPlay, FaPause } from 'react-icons/fa'
 
 
-
 class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
