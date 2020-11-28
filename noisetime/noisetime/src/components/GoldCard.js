@@ -53,7 +53,7 @@ class GoldCard extends React.Component {
         return (
           <div>
           <div className="mt-4">XAU ${items.price}</div>
-          <button className='btn btn-default' onClick={this.get_price}><AiOutlineReload/></button>
+          {/* <button className='btn btn-default' onClick={this.get_price}><AiOutlineReload/></button> */}
           </div>
         );
       }

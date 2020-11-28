@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import Button from 'react-bootstrap/Button'
 // import { Howl } from 'howler';
 import Spinner from 'react-bootstrap/Spinner'
+import Slider from 'react-input-slider';
+
 
 class NoiseControl extends React.Component {
   constructor (props) {
@@ -21,7 +23,7 @@ class NoiseControl extends React.Component {
       loaded: false,
       loop: true,
       mute: false,
-      treble_volume: 0.1,
+      treble_volume: 0.0,
       bass_volume: 0.33,
     }
 
@@ -32,9 +34,9 @@ class NoiseControl extends React.Component {
     this.handleStop = this.handleStop.bind(this)
     this.handleLoopToggle = this.handleLoopToggle.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
-    
-    
   }
+
+  
 
   componentWillUnmount () {
     this.clearRAF()
@@ -99,18 +101,18 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.bass_volume}
           ref={(ref) => (this.player = ref)}
         />
         <ReactHowler
-          src={['noise.mp3']}
+          src={['treble_noise.mp3']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}
@@ -121,30 +123,25 @@ class NoiseControl extends React.Component {
         <div>
           <div className='volume my-3 container'>
           <div className='my-4'>
-                <label>Treble</label>
-                <input
-                class='form-control-range input-lg'
-                  type='range'
-                  min='0'
-                  max='1'
-                  step='.01'
-                  value={this.state.treble_volume}
-                  onChange={e => this.setState({ treble_volume: parseFloat(e.target.value) })}
-                />
+              <Slider
+              axis="x"
+              xstep={0.0001}
+              xmin={0}
+              xmax={1}
+              x={this.state.treble_volume}
+              onChange={({x}) => this.setState({ treble_volume: parseFloat(x.toFixed(5)) })}
+            />
           </div>
           <div className='my-4'>
-                <label>Bass</label>
-          
-              <input
-                class='form-control-range input-lg'
-                  type='range'
-                  min='0'
-                  max='1'
-                  step='.01'
-                  value={this.state.bass_volume}
-                  onChange={e => this.setState({ bass_volume: parseFloat(e.target.value) })}
+            <Slider
+                  axis="x"
+                  xstep={0.0001}
+                  xmin={0}
+                  xmax={1}
+                  x={this.state.bass_volume}
+                  onChange={({x}) => this.setState({ bass_volume: parseFloat(x.toFixed(5)) })}
                 />
-          </div>
+            </div>
           </div>
           <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
             {(this.state.playing) ? 'Stop Noise' : 'Start Noise'}
