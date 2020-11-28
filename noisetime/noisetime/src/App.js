@@ -16,10 +16,7 @@ import ReactGA from 'react-ga'
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
 import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
+  BrowserView
 } from "react-device-detect";
 
 
