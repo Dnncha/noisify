@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
 import ls from 'local-storage'
+import { FaPlay, FaPause } from 'react-icons/fa'
 
 
 
@@ -151,8 +152,8 @@ class NoiseControl extends React.Component {
                 />
             </div>
           </div>
-          <Button variant="outline-primary" size="lg" onClick={this.handleToggle}>
-            {(this.state.playing) ? 'Stop Noise' : 'Start Noise'}
+          <Button variant="outline-light" className="mb-5" size="lg" onClick={this.handleToggle}>
+            {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
         </div>
         }
