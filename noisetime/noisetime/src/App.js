@@ -39,7 +39,7 @@ class App extends React.Component {
       <Container className="bg-dark text-light py-5" fluid>
         <Row >
           <Col className="text-center">
-            <div className="my-2">
+            <div>
               <ParticleImage
                 src={"/noise.png"}
                 scale={.5}
@@ -49,7 +49,7 @@ class App extends React.Component {
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}
                 width={1000}
-                height={500}
+                height={600}
                 backgroundColor={"#343a40"}
               />
             </div>

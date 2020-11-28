@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
     "firebase": "^8.1.1",
+    "local-storage": "^2.0.0",
     "polygon.io": "^1.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",

@@ -4,6 +4,8 @@ import raf from 'raf' // requestAnimationFrame polyfill
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
+import ls from 'local-storage'
+
 
 
 class NoiseControl extends React.Component {
@@ -22,8 +24,8 @@ class NoiseControl extends React.Component {
       loaded: false,
       loop: true,
       mute: false,
-      treble_volume: 0.0,
-      bass_volume: 0.33,
+      treble_volume: ls.get('treble_volume') || 0.0,
+      bass_volume: ls.get('bass_volume') || 0.33,
     }
 
     this.handleToggle = this.handleToggle.bind(this)
@@ -39,6 +41,11 @@ class NoiseControl extends React.Component {
 
   componentWillUnmount () {
     this.clearRAF()
+  }
+
+  componentWillUpdate () {
+    ls.set('treble_volume', this.state.treble_volume)
+    ls.set('bass_volume', this.state.bass_volume)
   }
 
 
