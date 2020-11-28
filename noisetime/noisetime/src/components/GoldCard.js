@@ -1,5 +1,4 @@
 import React from 'react'
-import { AiOutlineReload } from 'react-icons/ai'
 
 class GoldCard extends React.Component {
     constructor(props) {
