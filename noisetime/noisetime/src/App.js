@@ -1,7 +1,5 @@
 import React from 'react'
-import ParticleImage, { ParticleOptions,
-  forces,
-  ParticleForce } from "react-particle-image";
+import ParticleImage, { ParticleOptions, forces, ParticleForce } from "react-particle-image";
 import { NoiseControl } from './players'
 import Timer from 'react-compound-timer'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,15 +8,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
 import GoldCard from './components/GoldCard'
-// import GoldCardRT from './components/GoldCardRT'
 import LaunchCount from './components/LaunchCount'
 import ReactGA from 'react-ga'
+import {  BrowserView } from "react-device-detect";
+
 ReactGA.initialize('G-49CPNXEPEK');
 ReactGA.pageview(window.location.pathname + window.location.search);
-import {
-  BrowserView
-} from "react-device-detect";
-
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
