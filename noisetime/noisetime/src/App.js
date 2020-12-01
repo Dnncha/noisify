@@ -10,6 +10,7 @@ import IPCard from './components/IPCard'
 import GoldCard from './components/GoldCard'
 import LaunchCount from './components/LaunchCount'
 import ReactGA from 'react-ga'
+import Button from 'react-bootstrap/Button'
 import {  BrowserView } from "react-device-detect";
 
 ReactGA.initialize('G-49CPNXEPEK');
@@ -29,7 +30,6 @@ const motionForce = (x: number, y: number): ParticleForce => {
 };
 
 
-
 class App extends React.Component {
   render () {
     return (
@@ -37,13 +37,12 @@ class App extends React.Component {
         <Row >
           <Col className="text-center">
           <BrowserView>
-
             <div>
               <ParticleImage
                 src={"/noise.png"}
                 scale={.5}
-                entropy={270}
-                maxParticles={2000}
+                entropy={470}
+                maxParticles={200}
                 particleOptions={particleOptions}
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}
@@ -57,27 +56,39 @@ class App extends React.Component {
             <h1 className='title my-3'>Noisify</h1>
             <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
             <NoiseControl className="mt-3 mb-3" />
-            <GoldCard></GoldCard>
-            {/* <GoldCardRT></GoldCardRT> */}
-
-            <IPCard></IPCard>
             <div className="mt-5">
               <Timer
                     initialTime={1200000}
                     direction="backward"
+                    startImmediately={false}
+                    checkpoints={[
+                      {
+                          time: 10,
+                          callback: () => console.log('Off we go. Get to work!'),
+                      },
+                      {
+                          time: 600000,
+                          callback: () => console.log('Halfway there.'),
+                      }
+                  ]}
                     >
-                    {() => (
+                    {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
-                            20 minute burndown: <Timer.Minutes /> minute <Timer.Seconds /> seconds
+                        <h5>TIMER</h5>
+                        <div className="mb-2">
+                          <Timer.Minutes /> minute <Timer.Seconds /> seconds
+                        </div>
+                        <Button variant="outline-light mx-1" onClick={start}>Start</Button>
+                        <Button variant="outline-light mx-1" onClick={stop}>Stop</Button>
+                        <Button variant="outline-light mx-1" onClick={reset}>Reset</Button>
                         </React.Fragment>
                     )}
                 </Timer>
               </div>
-              <LaunchCount></LaunchCount>
-              <Timer>
-                This session: <Timer.Minutes /> minutes <Timer.Seconds /> seconds
-              </Timer>
-            <p className="mt-3">A deep work tool made by <a href="https://focalise.ie">Focalise</a></p>
+            <p className="mt-5">Noisify is a deep work tool made by <a href="https://focalise.ie">Focalise</a></p>
+            <LaunchCount></LaunchCount>
+            <GoldCard></GoldCard>
+            <IPCard></IPCard>
           </Col>
         </Row>
       </Container>

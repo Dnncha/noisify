@@ -43,7 +43,7 @@ class NoiseControl extends React.Component {
     this.clearRAF()
   }
 
-  componentWillUpdate () {
+  componentDidUpdate () {
     ls.set('treble_volume', this.state.treble_volume)
     ls.set('bass_volume', this.state.bass_volume)
   }
@@ -78,7 +78,7 @@ class NoiseControl extends React.Component {
   handleStop () {
     this.player.stop()
     this.setState({
-      playing: false // Need to update our local state so we don't immediately invoke autoplay
+      playing: false
     })
   }
 
@@ -110,7 +110,7 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          html5={true}
+          // html5={true}
           volume={this.state.bass_volume}
           ref={(ref) => (this.player = ref)}
         />
@@ -120,7 +120,7 @@ class NoiseControl extends React.Component {
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           onEnd={this.handleOnEnd}
-          html5={true}
+          // html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}

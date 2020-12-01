@@ -34,12 +34,12 @@ class IPCard extends React.Component {
     render() {
       const { error, isLoaded, items } = this.state;
       if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Couldn't fetch IP: {error.message}</div>;
       } else if (!isLoaded) {
-        return <div>Loading...</div>;
+        return <div></div>;
       } else {
         return (
-          <div className="mt-4">Your IP is {items.ip}</div>
+          <div className="mt-4">Your IP is <div>{items.ip}</div></div>
         );
       }
     }
