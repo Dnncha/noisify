@@ -9,12 +9,8 @@ import Col from 'react-bootstrap/Col'
 import IPCard from './components/IPCard'
 import GoldCard from './components/GoldCard'
 import LaunchCount from './components/LaunchCount'
-import ReactGA from 'react-ga'
 import Button from 'react-bootstrap/Button'
 import {  BrowserView } from "react-device-detect";
-
-ReactGA.initialize('G-49CPNXEPEK');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -58,7 +54,7 @@ class App extends React.Component {
             <NoiseControl className="mt-3 mb-3" />
             <div className="mt-5">
               <Timer
-                    initialTime={1200000}
+                    initialTime={2400000}
                     direction="backward"
                     startImmediately={false}
                     checkpoints={[
@@ -74,7 +70,7 @@ class App extends React.Component {
                     >
                     {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
-                        <h5>TIMER</h5>
+                        <h5>FOCUS TIMER</h5>
                         <div className="mb-2">
                           <Timer.Minutes /> minute <Timer.Seconds /> seconds
                         </div>
@@ -85,7 +81,7 @@ class App extends React.Component {
                     )}
                 </Timer>
               </div>
-            <p className="mt-5">Noisify is a deep work tool made by <a href="https://focalise.ie">Focalise</a></p>
+            
             <LaunchCount></LaunchCount>
             <GoldCard></GoldCard>
             <IPCard></IPCard>
