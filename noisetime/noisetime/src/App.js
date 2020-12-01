@@ -43,7 +43,7 @@ class App extends React.Component {
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}
                 width={1000}
-                height={600}
+                height={500}
                 backgroundColor={"#343a40"}
               />
             </div>
