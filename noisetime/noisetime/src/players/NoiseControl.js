@@ -110,7 +110,7 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          // html5={true}
+          html5={true}
           volume={this.state.bass_volume}
           ref={(ref) => (this.player = ref)}
         />
@@ -120,7 +120,7 @@ class NoiseControl extends React.Component {
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           onEnd={this.handleOnEnd}
-          // html5={true}
+          html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}
