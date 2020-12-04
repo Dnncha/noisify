@@ -108,7 +108,7 @@ class NoiseControl extends React.Component {
     return (
       <div className='noise-control'>
         <ReactHowler
-          src={['bass_noise.mp3']}
+          src={['bass_noise.webm']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
@@ -123,7 +123,7 @@ class NoiseControl extends React.Component {
           ref={(ref) => (this.player = ref)}
         />
         <ReactHowler
-          src={['treble_noise.mp3']}
+          src={['treble_noise.webm']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
