@@ -6,7 +6,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
 import ls from 'local-storage'
 import { FaPlay, FaPause } from 'react-icons/fa'
-
+// import Howl from ''
 
 class NoiseControl extends React.Component {
   constructor (props) {
@@ -19,6 +19,10 @@ class NoiseControl extends React.Component {
     //   }
     // })
 
+    // this.noise.play('loop')
+
+
+    
     this.state = {
       playing: false,
       loaded: false,
@@ -64,13 +68,14 @@ class NoiseControl extends React.Component {
 
   handleOnPlay () {
     this.setState({
+      // playing: 'loop'
       playing: true
     })
   }
 
   handleOnEnd () {
     this.setState({
-      playing: false
+      // playing: false
     })
     this.clearRAF()
   }
@@ -110,8 +115,11 @@ class NoiseControl extends React.Component {
           onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          html5={true}
+          // html5={true}
           volume={this.state.bass_volume}
+          sprite = {{
+            loop: [100, 5000, true]
+          }}
           ref={(ref) => (this.player = ref)}
         />
         <ReactHowler
@@ -120,10 +128,13 @@ class NoiseControl extends React.Component {
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           onEnd={this.handleOnEnd}
-          html5={true}
+          // html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}
+          sprite = {{
+            loop: [100, 5000, true]
+          }}
           ref={(ref) => (this.player = ref)}
         />
         
