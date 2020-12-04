@@ -10,7 +10,7 @@ import IPCard from './components/IPCard'
 import GoldCard from './components/GoldCard'
 import LaunchCount from './components/LaunchCount'
 import Button from 'react-bootstrap/Button'
-// import {  BrowserView, IOSView } from "react-device-detect";
+import {  BrowserView, IOSView } from "react-device-detect";
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
