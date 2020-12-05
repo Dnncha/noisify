@@ -37,7 +37,6 @@ class NoiseControl extends React.Component {
     this.handleOnEnd = this.handleOnEnd.bind(this)
     this.handleOnPlay = this.handleOnPlay.bind(this)
     this.handleStop = this.handleStop.bind(this)
-    this.handleLoopToggle = this.handleLoopToggle.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
@@ -75,21 +74,15 @@ class NoiseControl extends React.Component {
 
   handleOnEnd () {
     this.setState({
-      // playing: false
+      playing: false
     })
-    this.clearRAF()
+    // this.clearRAF()
   }
 
   handleStop () {
     this.player.stop()
     this.setState({
       playing: false
-    })
-  }
-
-  handleLoopToggle () {
-    this.setState({
-      loop: !this.state.loop
     })
   }
 
@@ -108,32 +101,32 @@ class NoiseControl extends React.Component {
     return (
       <div className='noise-control'>
         <ReactHowler
-          src={['bass_noise.mp3']}
+          src={['bass_noise.webm']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
           // html5={true}
           volume={this.state.bass_volume}
           sprite = {{
-            loop: [100, 5999, true]
+            loop: [0, 1000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
         <ReactHowler
-          src={['treble_noise.mp3']}
+          src={['treble_noise.webm']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           // html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}
           sprite = {{
-            loop: [100, 5549, true]
+            loop: [0, 1000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
