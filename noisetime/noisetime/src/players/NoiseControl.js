@@ -111,7 +111,7 @@ class NoiseControl extends React.Component {
           // html5={true}
           volume={this.state.bass_volume}
           sprite = {{
-            loop: [0, 1000, true]
+            loop: [300, 6000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
@@ -126,7 +126,7 @@ class NoiseControl extends React.Component {
           mute={this.state.mute}
           volume={this.state.treble_volume}
           sprite = {{
-            loop: [0, 1000, true]
+            loop: [100, 3000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
