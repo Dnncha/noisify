@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
-import raf from 'raf' // requestAnimationFrame polyfill
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
@@ -11,17 +10,6 @@ import { FaPlay, FaPause } from 'react-icons/fa'
 class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
-
-    // this.noise = new Howl({
-    //   src: ["noise.mp3"],
-    //   sprite: {
-    //     loop: [100, 2000, true]      
-    //   }
-    // })
-
-    // this.noise.play('loop')
-
-
     
     this.state = {
       playing: false,
@@ -40,10 +28,9 @@ class NoiseControl extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
-  
 
   componentWillUnmount () {
-    this.clearRAF()
+    // this.clearRAF()
   }
 
   componentDidUpdate () {
@@ -92,10 +79,6 @@ class NoiseControl extends React.Component {
     })
   }
 
-  clearRAF () {
-    raf.cancel(this._raf)
-  }
-
 
   render () {
     return (
@@ -105,10 +88,9 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
-          // html5={true}
+          html5={true}
           volume={this.state.bass_volume}
           sprite = {{
             loop: [300, 6000, true]
@@ -120,8 +102,7 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          // onEnd={this.handleOnEnd}
-          // html5={true}
+          html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.treble_volume}
@@ -134,8 +115,8 @@ class NoiseControl extends React.Component {
         {this.state.loaded && 
         <div>
           <div className='volume my-3 container'>
-          <div className='my-4'>
-              <Slider
+          <div className='my-5'>
+            <Slider
               axis="x"
               xstep={0.0001}
               xmin={0}
@@ -144,7 +125,7 @@ class NoiseControl extends React.Component {
               onChange={({x}) => this.setState({ treble_volume: parseFloat(x.toFixed(5)) })}
             />
           </div>
-          <div className='my-4'>
+          <div className='my-5'>
             <Slider
                   axis="x"
                   xstep={0.0001}
