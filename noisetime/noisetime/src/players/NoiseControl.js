@@ -5,6 +5,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
 import ls from 'local-storage'
 import { FaPlay, FaPause } from 'react-icons/fa'
+import Timer from 'react-compound-timer'
+
 // import Howl from ''
 
 class NoiseControl extends React.Component {
@@ -13,6 +15,7 @@ class NoiseControl extends React.Component {
     
     this.state = {
       playing: false,
+      ding_playing: false,
       loaded: false,
       loop: true,
       mute: false,
@@ -23,6 +26,7 @@ class NoiseControl extends React.Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.handleOnLoad = this.handleOnLoad.bind(this)
     this.handleOnEnd = this.handleOnEnd.bind(this)
+    this.handleDingEnd = this.handleDingEnd.bind(this)
     this.handleOnPlay = this.handleOnPlay.bind(this)
     this.handleStop = this.handleStop.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
@@ -45,6 +49,12 @@ class NoiseControl extends React.Component {
     })
   }
 
+  handleDing () {
+    this.setState ({
+      ding_playing: true
+    })
+  }
+
   handleOnLoad () {
     this.setState({
       loaded: true,
@@ -54,8 +64,13 @@ class NoiseControl extends React.Component {
 
   handleOnPlay () {
     this.setState({
-      // playing: 'loop'
       playing: true
+    })
+  }
+
+  handleDingEnd () {
+    this.setState({
+      ding_playing: false
     })
   }
 
@@ -63,7 +78,6 @@ class NoiseControl extends React.Component {
     this.setState({
       playing: false
     })
-    // this.clearRAF()
   }
 
   handleStop () {
@@ -111,6 +125,22 @@ class NoiseControl extends React.Component {
           }}
           ref={(ref) => (this.player = ref)}
         />
+
+        <ReactHowler
+          src={['ding.mp3']}
+          playing={this.state.ding_playing}
+          onLoad={this.handleOnLoad}
+          onPlay={this.handleOnPlay}
+          onEnd={this.handleDingEnd}
+          html5={true}
+          loop={false}
+          volume = {0.2}
+          sprite = {{
+            loop: [0, 5000]
+          }}
+          mute={this.state.mute}
+          ref={(ref) => (this.player = ref)}
+        />
         
         {this.state.loaded && 
         <div>
@@ -139,6 +169,38 @@ class NoiseControl extends React.Component {
           <Button variant="outline-light" className="mb-5" size="lg" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
+
+          <div className="mt-5">
+              <Timer
+                    initialTime={2400000}
+                    direction="backward"
+                    startImmediately={false}
+                    checkpoints={[
+                      {
+                          time: 100,
+                          callback: () => this.handleDing(),
+                      }
+                  ]}
+                    // onStart={() => this.setState({ding_playing: true})}
+                    onStop={() => this.handleDing()}
+                    onReset={() => this.handleDing()}
+                    onResume={() => this.handleDing()}
+                    >
+                    {({start, resume, pause, stop, reset, timerState}) => (
+                      <React.Fragment>
+                        <h5>TIMER</h5>
+                        <div className="mb-2">
+                          <Timer.Minutes /> minute <Timer.Seconds /> seconds
+                        </div>
+                        
+                        <Button variant="outline-light mx-1" onClick={start}>Start</Button>
+                        <Button variant="outline-light mx-1" onClick={pause}>Pause</Button>
+                        <Button variant="outline-light mx-1" onClick={reset}>Reset</Button>
+                        </React.Fragment>
+                    )}
+                </Timer>
+              </div>
+            
         </div>
         }
 
