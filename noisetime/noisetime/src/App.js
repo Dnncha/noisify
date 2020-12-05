@@ -51,7 +51,6 @@ class App extends React.Component {
 
             <h1 className='title my-3'>Noisify</h1>
             <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
-            <p Style={"opacity:0.4"}>Flann status: Good</p>
             <NoiseControl className="mt-3 mb-3" />
             <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
             <div className="mt-5">
