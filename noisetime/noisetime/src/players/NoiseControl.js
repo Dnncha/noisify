@@ -26,7 +26,7 @@ class NoiseControl extends React.Component {
     this.state = {
       playing: false,
       loaded: false,
-      loop: true,
+      loop: false,
       mute: false,
       treble_volume: ls.get('treble_volume') || 0.0,
       bass_volume: ls.get('bass_volume') || 0.33,
@@ -37,7 +37,6 @@ class NoiseControl extends React.Component {
     this.handleOnEnd = this.handleOnEnd.bind(this)
     this.handleOnPlay = this.handleOnPlay.bind(this)
     this.handleStop = this.handleStop.bind(this)
-    this.handleLoopToggle = this.handleLoopToggle.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
@@ -75,21 +74,15 @@ class NoiseControl extends React.Component {
 
   handleOnEnd () {
     this.setState({
-      // playing: false
+      playing: false
     })
-    this.clearRAF()
+    // this.clearRAF()
   }
 
   handleStop () {
     this.player.stop()
     this.setState({
       playing: false
-    })
-  }
-
-  handleLoopToggle () {
-    this.setState({
-      loop: !this.state.loop
     })
   }
 
@@ -112,7 +105,7 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           loop={this.state.loop}
           mute={this.state.mute}
           // html5={true}
@@ -127,7 +120,7 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
+          // onEnd={this.handleOnEnd}
           // html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
