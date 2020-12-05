@@ -26,7 +26,7 @@ class NoiseControl extends React.Component {
     this.state = {
       playing: false,
       loaded: false,
-      loop: false,
+      loop: true,
       mute: false,
       treble_volume: ls.get('treble_volume') || 0.0,
       bass_volume: ls.get('bass_volume') || 0.33,
@@ -111,7 +111,7 @@ class NoiseControl extends React.Component {
           // html5={true}
           volume={this.state.bass_volume}
           sprite = {{
-            loop: [600, 7000, true]
+            loop: [0, 1000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
@@ -126,7 +126,7 @@ class NoiseControl extends React.Component {
           mute={this.state.mute}
           volume={this.state.treble_volume}
           sprite = {{
-            loop: [500, 6050, true]
+            loop: [0, 1000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
