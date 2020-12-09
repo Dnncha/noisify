@@ -7,8 +7,6 @@ import ls from 'local-storage'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import Timer from 'react-compound-timer'
 
-// import Howl from ''
-
 class NoiseControl extends React.Component {
   constructor (props) {
     super(props)
@@ -19,8 +17,10 @@ class NoiseControl extends React.Component {
       loaded: false,
       loop: true,
       mute: false,
-      treble_volume: ls.get('treble_volume') || 0.0,
+      notification_volume: 0.15,
+      treble_volume: ls.get('treble_volume') || 0.05,
       bass_volume: ls.get('bass_volume') || 0.33,
+      birds_volume: ls.get('birds_volume') || 0.5,
     }
 
     this.handleToggle = this.handleToggle.bind(this)
@@ -40,6 +40,7 @@ class NoiseControl extends React.Component {
   componentDidUpdate () {
     ls.set('treble_volume', this.state.treble_volume)
     ls.set('bass_volume', this.state.bass_volume)
+    ls.set('birds_volume', this.state.bass_volume)
   }
 
 
@@ -97,6 +98,24 @@ class NoiseControl extends React.Component {
   render () {
     return (
       <div className='noise-control'>
+
+
+        <ReactHowler
+          src={['treble_noise.webm']}
+          playing={this.state.playing}
+          onLoad={this.handleOnLoad}
+          onPlay={this.handleOnPlay}
+          html5={true}
+          // loop={this.state.loop}
+          mute={this.state.mute}
+          volume={this.state.treble_volume}
+          sprite = {{
+            loop: [100, 4000, true]
+          }}
+          ref={(ref) => (this.player = ref)}
+        />
+
+
         <ReactHowler
           src={['bass_noise.webm']}
           playing={this.state.playing}
@@ -111,20 +130,22 @@ class NoiseControl extends React.Component {
           }}
           ref={(ref) => (this.player = ref)}
         />
+
         <ReactHowler
-          src={['treble_noise.webm']}
+          src={['birds.mp3']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
-          volume={this.state.treble_volume}
+          volume={this.state.birds_volume}
           sprite = {{
-            loop: [100, 3000, true]
+            loop: [100, 300000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
+        
 
         <ReactHowler
           src={['ding.mp3']}
@@ -132,9 +153,9 @@ class NoiseControl extends React.Component {
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           onEnd={this.handleDingEnd}
+          volume={this.state.notification_volume}
           html5={true}
           loop={false}
-          volume = {0.2}
           sprite = {{
             loop: [0, 5000]
           }}
@@ -165,6 +186,17 @@ class NoiseControl extends React.Component {
                   onChange={({x}) => this.setState({ bass_volume: parseFloat(x.toFixed(5)) })}
                 />
             </div>
+
+            <div className='my-5'>
+            <Slider
+                  axis="x"
+                  xstep={0.0001}
+                  xmin={0}
+                  xmax={1}
+                  x={this.state.birds_volume}
+                  onChange={({x}) => this.setState({ birds_volume: parseFloat(x.toFixed(5)) })}
+                />
+            </div>
           </div>
           <Button variant="outline-light" className="mb-5" size="lg" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
@@ -181,7 +213,7 @@ class NoiseControl extends React.Component {
                           callback: () => this.handleDing(),
                       }
                   ]}
-                    // onStart={() => this.setState({ding_playing: true})}
+                    onStart={() => this.handleDing()}
                     onStop={() => this.handleDing()}
                     onReset={() => this.handleDing()}
                     onResume={() => this.handleDing()}
