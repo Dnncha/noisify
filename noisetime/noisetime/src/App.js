@@ -5,10 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import IPCard from './components/IPCard'
-import ReactHowler from 'react-howler'
 import LaunchCount from './components/LaunchCount'
-import Button from 'react-bootstrap/Button'
 import {  BrowserView, IOSView } from "react-device-detect";
 
 const particleOptions: ParticleOptions = {
@@ -55,8 +52,6 @@ class App extends React.Component {
             <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
             
             <LaunchCount></LaunchCount>
-            {/* <GoldCard></GoldCard> */}
-            <IPCard></IPCard>
           </Col>
         </Row>
       </Container>

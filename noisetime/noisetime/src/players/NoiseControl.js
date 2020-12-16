@@ -15,12 +15,13 @@ class NoiseControl extends React.Component {
       playing: false,
       ding_playing: false,
       loaded: false,
-      loop: true,
+      loop: false,
       mute: false,
       notification_volume: 0.15,
       treble_volume: ls.get('treble_volume') || 0.05,
-      bass_volume: ls.get('bass_volume') || 0.33,
-      birds_volume: ls.get('birds_volume') || 0.5,
+      bass_volume: ls.get('bass_volume') || 0.10,
+      birds_volume: ls.get('birds_volume') || 0.75,
+      rain_volume: ls.get('rain_volume') || 0.75,
     }
 
     this.handleToggle = this.handleToggle.bind(this)
@@ -41,6 +42,8 @@ class NoiseControl extends React.Component {
     ls.set('treble_volume', this.state.treble_volume)
     ls.set('bass_volume', this.state.bass_volume)
     ls.set('birds_volume', this.state.bass_volume)
+    ls.set('rain_volume', this.state.bass_volume)
+
   }
 
 
@@ -100,7 +103,7 @@ class NoiseControl extends React.Component {
       <div className='noise-control'>
 
 
-        <ReactHowler
+        {/* <ReactHowler
           src={['treble_noise.webm']}
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
@@ -110,7 +113,7 @@ class NoiseControl extends React.Component {
           mute={this.state.mute}
           volume={this.state.treble_volume}
           sprite = {{
-            loop: [100, 4000, true]
+            loop: [100, 6000, true]
           }}
           ref={(ref) => (this.player = ref)}
         />
@@ -121,15 +124,15 @@ class NoiseControl extends React.Component {
           playing={this.state.playing}
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
-          loop={this.state.loop}
+          // loop={this.state.loop}
           mute={this.state.mute}
           html5={true}
           volume={this.state.bass_volume}
           sprite = {{
-            loop: [300, 6000, true]
+            loop: [297, 4500, true]
           }}
           ref={(ref) => (this.player = ref)}
-        />
+        /> */}
 
         <ReactHowler
           src={['birds.mp3']}
@@ -137,9 +140,24 @@ class NoiseControl extends React.Component {
           onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           html5={true}
-          loop={this.state.loop}
+          // loop={this.state.loop}
           mute={this.state.mute}
           volume={this.state.birds_volume}
+          sprite = {{
+            loop: [100, 300000, true]
+          }}
+          ref={(ref) => (this.player = ref)}
+        />
+
+          <ReactHowler
+          src={['rain.mp3']}
+          playing={this.state.playing}
+          onLoad={this.handleOnLoad}
+          onPlay={this.handleOnPlay}
+          html5={true}
+          loop={this.state.loop}
+          mute={this.state.mute}
+          volume={this.state.rain_volume}
           sprite = {{
             loop: [100, 300000, true]
           }}
@@ -166,8 +184,8 @@ class NoiseControl extends React.Component {
         {this.state.loaded && 
         <div>
           <div className='volume my-3 container'>
-          <div className='my-5'>
-            <Slider
+          {/* <div className='my-5'> */}
+            {/* <Slider
               axis="x"
               xstep={0.0001}
               xmin={0}
@@ -185,7 +203,7 @@ class NoiseControl extends React.Component {
                   x={this.state.bass_volume}
                   onChange={({x}) => this.setState({ bass_volume: parseFloat(x.toFixed(5)) })}
                 />
-            </div>
+            </div> */}
 
             <div className='my-5'>
             <Slider
@@ -195,6 +213,17 @@ class NoiseControl extends React.Component {
                   xmax={1}
                   x={this.state.birds_volume}
                   onChange={({x}) => this.setState({ birds_volume: parseFloat(x.toFixed(5)) })}
+                />
+            </div>
+
+            <div className='my-5'>
+            <Slider
+                  axis="x"
+                  xstep={0.0001}
+                  xmin={0}
+                  xmax={1}
+                  x={this.state.rain_volume}
+                  onChange={({x}) => this.setState({ rain_volume: parseFloat(x.toFixed(5)) })}
                 />
             </div>
           </div>
