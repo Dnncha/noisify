@@ -1346,7 +1346,7 @@
     terminal-link "^2.0.0"
     v8-to-istanbul "^6.0.1"
   optionalDependencies:
-    node-notifier "^8.0.0"
+    node-notifier "^8.0.1"
 
 "@jest/source-map@^26.5.0":
   version "26.5.0"
@@ -5651,8 +5651,8 @@ ignore@^5.1.4:
   version "5.1.8"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
 
-immer@7.0.9:
-  version "7.0.9"
+immer@^8.0.1:
+  version "8.0.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-7.0.9.tgz#28e7552c21d39dd76feccd2b800b7bc86ee4a62e"
 
 import-cwd@^2.0.0:
@@ -8748,7 +8748,7 @@ react-dev-utils@^11.0.0:
     global-modules "2.0.0"
     globby "11.0.1"
     gzip-size "5.1.1"
-    immer "7.0.9"
+    immer@^8.0.1:
     inquirer "7.3.3"
     is-root "2.1.0"
     loader-utils "2.0.0"
