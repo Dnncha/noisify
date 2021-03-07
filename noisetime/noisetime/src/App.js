@@ -31,7 +31,7 @@ class App extends React.Component {
                 src={"/noise.png"}
                 scale={.3}
                 entropy={470}
-                maxParticles={200}
+                maxParticles={100}
                 particleOptions={particleOptions}
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}

@@ -208,9 +208,9 @@ class NoiseControl extends React.Component {
                         </div>
                         
                         <div className="flex gap-4 items-baseline flex-wrap">
-                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={start}>Start</Button>
-                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={pause}>Pause</Button>
-                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={reset}>Reset</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={start}>Start</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={pause}>Pause</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={reset}>Reset</Button>
                         </div>
                         </React.Fragment>
                     )}
