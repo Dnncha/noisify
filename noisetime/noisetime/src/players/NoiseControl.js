@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
-import ReactPlayer from 'react-player'
 
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
