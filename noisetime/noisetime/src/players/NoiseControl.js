@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
+import ReactPlayer from 'react-player'
+
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
@@ -15,7 +17,7 @@ class NoiseControl extends React.Component {
       playing: false,
       ding_playing: false,
       loaded: false,
-      loop: false,
+      loop: true,
       mute: false,
       notification_volume: 0.15,
       treble_volume: ls.get('treble_volume') || 0.05,
@@ -100,54 +102,7 @@ class NoiseControl extends React.Component {
 
   render () {
     return (
-      <div className='noise-control'>
-
-
-        {/* <ReactHowler
-          src={['treble_noise.webm']}
-          playing={this.state.playing}
-          onLoad={this.handleOnLoad}
-          onPlay={this.handleOnPlay}
-          html5={true}
-          // loop={this.state.loop}
-          mute={this.state.mute}
-          volume={this.state.treble_volume}
-          sprite = {{
-            loop: [100, 6000, true]
-          }}
-          ref={(ref) => (this.player = ref)}
-        />
-
-
-        <ReactHowler
-          src={['bass_noise.webm']}
-          playing={this.state.playing}
-          onLoad={this.handleOnLoad}
-          onPlay={this.handleOnPlay}
-          // loop={this.state.loop}
-          mute={this.state.mute}
-          html5={true}
-          volume={this.state.bass_volume}
-          sprite = {{
-            loop: [297, 4500, true]
-          }}
-          ref={(ref) => (this.player = ref)}
-        /> */}
-
-        <ReactHowler
-          src={['birds.mp3']}
-          playing={this.state.playing}
-          onLoad={this.handleOnLoad}
-          onPlay={this.handleOnPlay}
-          html5={true}
-          // loop={this.state.loop}
-          mute={this.state.mute}
-          volume={this.state.birds_volume}
-          sprite = {{
-            loop: [100, 300000, true]
-          }}
-          ref={(ref) => (this.player = ref)}
-        />
+      <div className=''>
 
           <ReactHowler
           src={['rain.mp3']}
@@ -157,10 +112,10 @@ class NoiseControl extends React.Component {
           html5={true}
           loop={this.state.loop}
           mute={this.state.mute}
-          volume={this.state.rain_volume}
           sprite = {{
-            loop: [100, 300000, true]
+            loop: [1075, 15000]
           }}
+          volume={this.state.rain_volume}
           ref={(ref) => (this.player = ref)}
         />
         
@@ -205,7 +160,7 @@ class NoiseControl extends React.Component {
                 />
             </div> */}
 
-            <div className='my-5'>
+            {/* <div className='my-5'>
             <Slider
                   axis="x"
                   xstep={0.0001}
@@ -214,9 +169,9 @@ class NoiseControl extends React.Component {
                   x={this.state.birds_volume}
                   onChange={({x}) => this.setState({ birds_volume: parseFloat(x.toFixed(5)) })}
                 />
-            </div>
+            </div> */}
 
-            <div className='my-5'>
+            <div className='my-8'>
             <Slider
                   axis="x"
                   xstep={0.0001}
@@ -227,13 +182,13 @@ class NoiseControl extends React.Component {
                 />
             </div>
           </div>
-          <Button variant="outline-light" className="mb-5" size="lg" onClick={this.handleToggle}>
+          <Button className="text-2xl outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
 
           <div className="mt-5">
               <Timer
-                    initialTime={2400000}
+                    initialTime={4800000}
                     direction="backward"
                     startImmediately={false}
                     checkpoints={[
@@ -249,14 +204,15 @@ class NoiseControl extends React.Component {
                     >
                     {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
-                        <h5>TIMER</h5>
-                        <div className="mb-2">
-                          <Timer.Minutes /> minute <Timer.Seconds /> seconds
+                        <div className="mb-2 text-gray-400">
+                        <Timer.Hours /> minute  <Timer.Minutes /> minute <Timer.Seconds /> seconds
                         </div>
                         
-                        <Button variant="outline-light mx-1" onClick={start}>Start</Button>
-                        <Button variant="outline-light mx-1" onClick={pause}>Pause</Button>
-                        <Button variant="outline-light mx-1" onClick={reset}>Reset</Button>
+                        <div className="flex gap-4 items-baseline flex-wrap">
+                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={start}>Start</Button>
+                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={pause}>Pause</Button>
+                        <Button className="bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={reset}>Reset</Button>
+                        </div>
                         </React.Fragment>
                     )}
                 </Timer>

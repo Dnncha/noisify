@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.1",
     "@reach/slider": "^0.12.1",
     "@shwilliam/react-rubber-slider": "^0.1.4",
+    "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
     "d3": "^6.2.0",
@@ -15,6 +18,7 @@
     "local-storage": "^2.0.0",
     "patch-package": "^6.2.2",
     "polygon.io": "^1.0.0",
+    "postcss": "^7.0.35",
     "postinstall-postinstall": "^2.1.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
@@ -26,6 +30,7 @@
     "react-icons": "^3.11.0",
     "react-input-slider": "^6.0.0",
     "react-particle-image": "^1.0.1",
+    "react-player": "^2.9.0",
     "react-scripts": "4.0.0",
     "react-spinners": "^0.9.0",
     "reactfire": "^2.0.3",
@@ -34,9 +39,9 @@
     "ws": "^7.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "postinstall": "patch-package"
   },
@@ -57,5 +62,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }

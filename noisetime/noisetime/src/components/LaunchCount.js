@@ -39,9 +39,9 @@ class LaunchCount extends React.Component {
         return <div>Loading...</div>;
       } else {
         return (
-        <div className="mt-5"><p>Get more done with the <strong>Noisify™</strong> premium-grade white noise generator.</p>
+        <div className="mt-5"><p>Get more done with <strong>Noisify™</strong> premium-grade white noise generator.</p>
         <p className="mt-3">Noisify is a deep work tool made by <a href="https://focalise.ie">Focalise</a></p>
-        <p>Noisify has successfully launched {items.value} times. It's a world record for white noise generators of this particular breed.</p>
+        <p class="text-gray-300">Noisify has successfully launched {items.value} times.</p>
         </div>
           );
       }

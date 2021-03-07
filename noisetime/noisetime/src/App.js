@@ -1,7 +1,7 @@
 import React from 'react'
 import ParticleImage, { ParticleOptions, forces, ParticleForce } from "react-particle-image";
 import { NoiseControl } from './players'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -26,11 +26,10 @@ const motionForce = (x: number, y: number): ParticleForce => {
 class App extends React.Component {
   render () {
     return (
-      <Container className="bg-dark text-light py-5" fluid>
-        <Row >
-          <Col className="text-center">
+      <div className="bg-gray-800">
+      <div className="text-gray-200 py-5 container mx-auto">
           <BrowserView>
-            <div>
+            <div className="flex place-content-center">
               <ParticleImage
                 src={"/noise.png"}
                 scale={.3}
@@ -41,20 +40,20 @@ class App extends React.Component {
                 touchMoveForce={motionForce}
                 width={1000}
                 height={500}
-                backgroundColor={"#343a40"}
+                backgroundColor={"#1f2a37"}
               />
             </div>
             </BrowserView>
 
-            <h1 className='title my-3'>Noisify</h1>
-            <p Style={"opacity:0.4"}>Drown out the noise with more noise</p>
-            <NoiseControl className="mt-3 mb-3" />
+            <h1 className='title my-3 text-6xl font-bold text-gray-100'>Noisify</h1>
+            <p className='text-gray-200 text-xl'>Drown out the noise with more noise</p>
+            <NoiseControl className="my-8"/>
             <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
             
             <LaunchCount></LaunchCount>
-          </Col>
-        </Row>
-      </Container>
+
+      </div>
+      </div>
     )
   }
 }
