@@ -2,9 +2,6 @@ import React from 'react'
 import ParticleImage, { ParticleOptions, forces, ParticleForce } from "react-particle-image";
 import { NoiseControl } from './players'
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import LaunchCount from './components/LaunchCount'
 import {  BrowserView, IOSView } from "react-device-detect";
 
