@@ -30,12 +30,13 @@ class App extends React.Component {
               <ParticleImage
                 src={"/noise.png"}
                 scale={.3}
-                entropy={470}
-                maxParticles={100}
+                Style="display:absolute;"
+                entropy={800}
+                maxParticles={50}
                 particleOptions={particleOptions}
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}
-                width={1000}
+                width={2000}
                 height={500}
                 backgroundColor={"#1f2a37"}
               />
@@ -43,7 +44,7 @@ class App extends React.Component {
             </BrowserView>
 
             <h1 className='title my-3 text-6xl font-bold text-gray-100'>Noisify</h1>
-            <p className='text-gray-200 text-xl'>Drown out the noise with more noise</p>
+            <p className='text-gray-300 text-xl'>Drown out the noise with more noise</p>
             <NoiseControl className="my-8"/>
             <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
             

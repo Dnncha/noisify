@@ -47,6 +47,11 @@ class NoiseControl extends React.Component {
 
   }
 
+  handleStartIfStopped () {
+    if (!this.state.playing) {
+      this.handleToggle()
+    }
+  }
 
   handleToggle () {
     this.setState({
@@ -137,54 +142,35 @@ class NoiseControl extends React.Component {
         
         {this.state.loaded && 
         <div>
-          <div className='volume my-3 container'>
-          {/* <div className='my-5'> */}
-            {/* <Slider
-              axis="x"
-              xstep={0.0001}
-              xmin={0}
-              xmax={1}
-              x={this.state.treble_volume}
-              onChange={({x}) => this.setState({ treble_volume: parseFloat(x.toFixed(5)) })}
-            />
-          </div>
-          <div className='my-5'>
-            <Slider
-                  axis="x"
-                  xstep={0.0001}
-                  xmin={0}
-                  xmax={1}
-                  x={this.state.bass_volume}
-                  onChange={({x}) => this.setState({ bass_volume: parseFloat(x.toFixed(5)) })}
-                />
-            </div> */}
+        <div class="flex">
+          <Button className="text-4xl mr-16 my-8 outline-none" onClick={this.handleToggle}>
+            {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
+          </Button>
 
-            {/* <div className='my-5'>
+          <div className='volume my-3'>
+            <div className='my-4'>
             <Slider
                   axis="x"
                   xstep={0.0001}
+                  onDragStart={this.handleOnPlay}
                   xmin={0}
                   xmax={1}
-                  x={this.state.birds_volume}
-                  onChange={({x}) => this.setState({ birds_volume: parseFloat(x.toFixed(5)) })}
-                />
-            </div> */}
-
-            <div className='my-8'>
-            <Slider
-                  axis="x"
-                  xstep={0.0001}
-                  xmin={0}
-                  xmax={1}
+                  className={"my-8 w-12"}
                   x={this.state.rain_volume}
+                  styles={{
+                    track: {
+                      width: 300.
+                    },
+                    thumb: {
+                      width: 75,
+                      height: 75
+                    }
+                  }}
                   onChange={({x}) => this.setState({ rain_volume: parseFloat(x.toFixed(5)) })}
                 />
             </div>
           </div>
-          <Button className="text-2xl outline-none" onClick={this.handleToggle}>
-            {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
-          </Button>
-
+        </div>
           <div className="mt-5">
               <Timer
                     initialTime={4800000}
@@ -208,9 +194,9 @@ class NoiseControl extends React.Component {
                         </div>
                         
                         <div className="flex gap-4 items-baseline flex-wrap">
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={start}>Start</Button>
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={pause}>Pause</Button>
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold text-gray-100" onClick={reset}>Reset</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={start}>Start</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={pause}>Pause</Button>
+                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={reset}>Reset</Button>
                         </div>
                         </React.Fragment>
                     )}
