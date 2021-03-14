@@ -59,6 +59,15 @@ class NoiseControl extends React.Component {
     })
   }
 
+  handleTimerStop () {
+    this.player.stop()
+    this.setState ({
+      playing: false,
+      ding_playing: false
+    })
+  }
+
+
   handleDing () {
     this.setState ({
       ding_playing: true
@@ -143,7 +152,7 @@ class NoiseControl extends React.Component {
         {this.state.loaded && 
         <div>
         <div class="flex">
-          <Button className="text-4xl mr-16 my-8 outline-none focus-outline-none" onClick={this.handleToggle}>
+          <Button className="text-4xl mr-16 my-8 outline-none focus:outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
 
@@ -173,30 +182,27 @@ class NoiseControl extends React.Component {
         </div>
           <div className="mt-5">
               <Timer
-                    initialTime={4800000}
+                    initialTime={5400000}
                     direction="backward"
                     startImmediately={false}
-                    checkpoints={[
-                      {
-                          time: 100,
-                          callback: () => this.handleDing(),
-                      }
-                  ]}
                     onStart={() => this.handleDing()}
-                    onStop={() => this.handleDing()}
-                    onReset={() => this.handleDing()}
-                    onResume={() => this.handleDing()}
+                    onStop={() => this.handleTimerStop()}
+                    onPause={() => this.handleTimerStop()}
+                    onReset={() => this.handleTimerStop()}
+                    // onResume={() => this.handleDing()}
                     >
                     {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
-                        <div className="mb-2 text-gray-400">
-                        <Timer.Hours /> minute  <Timer.Minutes /> minute <Timer.Seconds /> seconds
-                        </div>
-                        
-                        <div className="flex gap-4 items-baseline flex-wrap">
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={start}>Start</Button>
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={pause}>Pause</Button>
-                        <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase font-semibold tracking-wide text-gray-100" onClick={reset}>Reset</Button>
+                        <div class="py-4 max-w-lg">
+                          <div className="mb-2 text-gray-400">
+                            <h2 class="font-bold text-2xl text-gray-300">Timer</h2>
+                            <Timer.Hours /> minute  <Timer.Minutes /> minute <Timer.Seconds /> seconds
+                          </div>
+                          
+                          <div className="flex gap-4 items-baseline flex-wrap">
+                          <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase focus:outline-none font-semibold tracking-wide text-gray-100" onClick={start}>Start</Button>
+                          <Button className="bg-gray-800 hover:bg-gray-700 py-2 px-4 shadow-lg rounded uppercase focus:outline-none font-semibold tracking-wide text-gray-100" onClick={stop}>Stop</Button>
+                          </div>
                         </div>
                         </React.Fragment>
                     )}
