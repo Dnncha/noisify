@@ -25,7 +25,18 @@ class App extends React.Component {
     return (
       <div className="bg-gray-800">
       <div className="text-gray-200 py-5 container mx-auto">
+        <div className="grid grid-cols-2">
+        <div>            
+          <h1 className='title my-3 text-6xl font-bold text-gray-100'>Noisify</h1>
+          <p className='text-gray-300 text-xl'>Drown out the noise with more noise</p>
+          <NoiseControl className="my-8"/>
+          <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
+
+          <LaunchCount></LaunchCount>
+          </div>
+          <div>
           <BrowserView>
+          <div className="object-contain">
             <div className="flex place-content-center">
               <ParticleImage
                 src={"/noise.png"}
@@ -36,20 +47,16 @@ class App extends React.Component {
                 particleOptions={particleOptions}
                 mouseMoveForce={motionForce}
                 touchMoveForce={motionForce}
-                width={2000}
+                width={500}
                 height={500}
                 backgroundColor={"#1f2a37"}
               />
             </div>
+            </div>
             </BrowserView>
-
-            <h1 className='title my-3 text-6xl font-bold text-gray-100'>Noisify</h1>
-            <p className='text-gray-300 text-xl'>Drown out the noise with more noise</p>
-            <NoiseControl className="my-8"/>
-            <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
+            </div>
             
-            <LaunchCount></LaunchCount>
-
+            </div>
       </div>
       </div>
     )
