@@ -143,7 +143,7 @@ class NoiseControl extends React.Component {
         {this.state.loaded && 
         <div>
         <div class="flex">
-          <Button className="text-4xl mr-16 my-8 outline-none" onClick={this.handleToggle}>
+          <Button className="text-4xl mr-16 my-8 outline-none focus-outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
 
