@@ -23,7 +23,7 @@ const motionForce = (x: number, y: number): ParticleForce => {
 class App extends React.Component {
   render () {
     return (
-      <div className="bg-gray-800 min-h-full">
+      <div className="bg-gray-800 py-48">
       <div className="text-gray-200 py-5 container mx-auto">
         <div className="grid grid-cols-2">
         <div>            
