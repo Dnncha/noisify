@@ -151,12 +151,14 @@ class NoiseControl extends React.Component {
         
         {this.state.loaded && 
         <div>
-        <div class="flex">
+        <div class="grid grid-cols-6">
+          <div className="sm:col-span-3 col-span-1">
           <Button className="text-4xl mr-16 my-8 outline-none focus:outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
+          </div>
 
-          <div className='volume my-3'>
+          <div className='sm:col-span-3 col-span-5 volume'>
             <div className='my-4'>
             <Slider
                   axis="x"
@@ -167,12 +169,12 @@ class NoiseControl extends React.Component {
                   className={"my-8 w-12"}
                   x={this.state.rain_volume}
                   styles={{
-                    track: {
-                      width: 300.
-                    },
+                    // track: {
+                      // width: 300.
+                    // },
                     thumb: {
-                      width: 75,
-                      height: 75
+                      width: 50,
+                      height: 50
                     }
                   }}
                   onChange={({x}) => this.setState({ rain_volume: parseFloat(x.toFixed(5)) })}
