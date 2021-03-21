@@ -23,9 +23,9 @@ const motionForce = (x: number, y: number): ParticleForce => {
 class App extends React.Component {
   render () {
     return (
-      <div className="bg-gray-800 px-8 py-48">
+      <div className="bg-gray-800 px-8 py-40">
       <div className="text-gray-200 py-5 container mx-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-1">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
         <div>            
           <h1 className='title my-3 text-6xl font-bold text-gray-100'>Noisify</h1>
           <p className='text-gray-300 text-xl'>Drown out the noise with more noise</p>
