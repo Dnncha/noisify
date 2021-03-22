@@ -1,12 +1,24 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
-
+import { HotKeys } from "react-hotkeys";
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Slider from 'react-input-slider';
 import ls from 'local-storage'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import Timer from 'react-compound-timer'
+
+
+const keyMap = {
+  VOLUME_UP: "right",
+  VOLUME_DOWN: "left"
+};
+
+const handlers = {
+  // VOLUME_UP: event => NoiseControl.setState(NoiseControl.rain_volume=NoiseControl.rain_volume+0.1),
+  // VOLUME_DOWN: event => console.log("Volume Down hotkey called!")
+};
+
 
 class NoiseControl extends React.Component {
   constructor (props) {
@@ -33,6 +45,8 @@ class NoiseControl extends React.Component {
     this.handleStop = this.handleStop.bind(this)
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
+
+  
 
 
   componentWillUnmount () {
@@ -115,7 +129,8 @@ class NoiseControl extends React.Component {
 
   render () {
     return (
-      <div className=''>
+    <HotKeys keyMap={keyMap} handlers={handlers}>
+    <div className=''>
 
           <ReactHowler
           src={['rain.mp3']}
@@ -151,7 +166,7 @@ class NoiseControl extends React.Component {
         
         {this.state.loaded && 
         <div>
-        <div class="grid grid-cols-6">
+        <div className="grid grid-cols-6">
           <div className="sm:col-span-3 col-span-1">
           <Button className="text-4xl mr-16 my-8 outline-none focus:outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
@@ -195,9 +210,9 @@ class NoiseControl extends React.Component {
                     >
                     {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
-                        <div class="py-4 max-w-lg">
+                        <div className="py-4 max-w-lg">
                           <div className="mb-2 text-gray-400">
-                            <h2 class="font-bold text-2xl text-gray-300">Timer</h2>
+                            <h2 className="font-bold text-2xl text-gray-300">Timer</h2>
                             <Timer.Hours /> minute  <Timer.Minutes /> minute <Timer.Seconds /> seconds
                           </div>
                           
@@ -225,6 +240,7 @@ class NoiseControl extends React.Component {
         }
 
       </div>
+      </HotKeys>
     )
   }
 }

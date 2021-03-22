@@ -1,6 +1,6 @@
 {
   "name": "noisetime",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
@@ -25,6 +25,7 @@
     "react-device-detect": "^1.14.0",
     "react-dom": "^17.0.1",
     "react-ga": "^3.3.0",
+    "react-hotkeys": "^2.0.0",
     "react-howler": "^5.0.0",
     "react-icons": "^3.11.0",
     "react-input-slider": "^6.0.0",
