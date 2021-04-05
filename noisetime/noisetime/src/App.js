@@ -36,7 +36,6 @@ class App extends React.Component {
           <p className='text-gray-300 text-xl'>Drown out the noise with more noise</p>
           <NoiseControl className="my-8"/>
           <IOSView>Protip: Noisify doesn't work on iOS if silent mode is enabled.</IOSView>
-
           <LaunchCount></LaunchCount>
           </div>
           <div>
