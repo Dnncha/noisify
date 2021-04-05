@@ -129,8 +129,8 @@ class NoiseControl extends React.Component {
 
   render () {
     return (
-    <HotKeys keyMap={keyMap} handlers={handlers}>
-    <div className=''>
+    
+    <div className='outline-none'>
 
           <ReactHowler
           src={['rain.mp3']}
@@ -165,10 +165,10 @@ class NoiseControl extends React.Component {
         />
         
         {this.state.loaded && 
-        <div>
+        <div className="outline-none">
         <div className="grid grid-cols-6">
           <div className="sm:col-span-3 col-span-1">
-          <Button className="text-4xl mr-16 my-8 outline-none focus:outline-none" onClick={this.handleToggle}>
+          <Button className="text-4xl mr-16 my-8 outline-none" onClick={this.handleToggle}>
             {(this.state.playing) ? <FaPause></FaPause> : <FaPlay></FaPlay>}
           </Button>
           </div>
@@ -211,14 +211,14 @@ class NoiseControl extends React.Component {
                     {({start, resume, pause, stop, reset, timerState}) => (
                       <React.Fragment>
                         <div className="py-4 max-w-lg">
-                          <div className="mb-2 text-gray-400">
+                          <div className="mb-2 text-gray-400 outline-none">
                             <h2 className="font-bold text-2xl text-gray-300">Timer</h2>
                             <Timer.Hours /> minute  <Timer.Minutes /> minute <Timer.Seconds /> seconds
                           </div>
                           
                           <div className="flex gap-4 items-baseline flex-wrap">
-                          <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase focus:outline-none font-semibold tracking-wide text-gray-100" onClick={start}>Start</Button>
-                          <Button className="bg-gray-800 hover:bg-gray-700 py-2 px-4 shadow-lg rounded uppercase focus:outline-none font-semibold tracking-wide text-gray-100" onClick={stop}>Stop</Button>
+                          <Button className="bg-gray-700 hover:bg-gray-600 py-2 px-4 shadow-lg rounded uppercase outline-none font-semibold tracking-wide text-gray-100" onClick={start}>Start</Button>
+                          <Button className="bg-gray-800 hover:bg-gray-700 py-2 px-4 shadow-lg rounded uppercase outline-none font-semibold tracking-wide text-gray-100" onClick={stop}>Stop</Button>
                           </div>
                         </div>
                         </React.Fragment>
@@ -240,7 +240,7 @@ class NoiseControl extends React.Component {
         }
 
       </div>
-      </HotKeys>
+
     )
   }
 }
