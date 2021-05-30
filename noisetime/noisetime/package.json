@@ -36,7 +36,7 @@
     "reactfire": "^2.0.3",
     "use-sound": "^1.0.2",
     "web-vitals": "^0.2.4",
-    "ws": "^7.4.0"
+    "ws": "^7.4.6"
   },
   "scripts": {
     "start": "craco start",
